@@ -1,0 +1,16 @@
+.next/
+node_modules/
+
+# Ignore files for PNPM, NPM and YARN
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Unformattable
+.husky
+.eslintignore
+.prettierignore
+.gitignore
+.env.*
+.env
+.npmrc
