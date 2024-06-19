@@ -14,3 +14,8 @@ yarn.lock
 .env.*
 .env
 .npmrc
+
+# GraphQL generated files
+persisted-query-manifest.json
+**/*.graphql.ts
+src/graphql/types.ts

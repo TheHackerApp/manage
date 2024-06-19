@@ -9,3 +9,8 @@ node_modules
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
+
+# GraphQL generated files
+persisted-query-manifest.json
+**/*.graphql.ts
+src/graphql/types.ts

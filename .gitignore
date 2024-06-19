@@ -114,6 +114,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # Local env files
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -150,3 +151,9 @@ next-env.d.ts
 
 # Ignore code-workspaces
 *.code-workspace
+
+### Project Files ###
+# GraphQL generated files
+persisted-query-manifest.json
+**/*.graphql.ts
+src/graphql/types.ts
