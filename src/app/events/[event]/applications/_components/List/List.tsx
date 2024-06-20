@@ -6,6 +6,8 @@ import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import DateTime from '@/components/DateTime';
+
 import Status from './_components/Status';
 import { useApplicationsSuspenseQuery } from './Applications.graphql';
 
@@ -37,7 +39,9 @@ const List = ({ event }: Props): ReactNode => {
             <TableCell>
               <Status status={application.status} />
             </TableCell>
-            <TableCell>{new Date(application.updatedAt).toLocaleString()}</TableCell>
+            <TableCell>
+              <DateTime value={application.updatedAt} />
+            </TableCell>
             <TableCell>
               <div className="relative flex justify-end items-center gap-2">
                 <Button
