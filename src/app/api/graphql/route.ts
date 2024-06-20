@@ -9,11 +9,16 @@ async function processRequest(request: Request): Promise<Response> {
   const session = cookies.get('session');
 
   const headers = new Headers({
-    'Event-Domain': request.headers.get('host') as string,
     'Accept-Encoding': request.headers.get('accept-encoding') ?? 'identity',
     'Content-Type': request.headers.get('content-type') ?? 'application/json',
   });
   if (session !== undefined) headers.set('Authorization', `Bearer ${session.value}`);
+
+  const slug = request.headers.get('event-slug');
+  if (slug !== null) headers.set('event-slug', slug);
+  else headers.set('event-domain', request.headers.get('host')!);
+
+  console.log(Object.fromEntries(headers));
 
   const url = new URL(request.url);
   url.host = UPSTREAM_URL.host;

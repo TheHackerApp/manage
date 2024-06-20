@@ -37,8 +37,12 @@ export function defaultLinkMiddleware(): ApolloLink {
 
     if (typeof window !== 'undefined') toast.error('Operation failed. Please try again later.');
   });
+  const scopeToEvent = setContext((_request, { event, headers = {} }) => {
+    if (event) headers['Event-Slug'] = event;
+    return { headers };
+  });
 
-  return ApolloLink.from([errorHandler, persistedQueries, retry]);
+  return ApolloLink.from([scopeToEvent, errorHandler, persistedQueries, retry]);
 }
 
 const logError = (operation: Operation, kind: string, message: string): void =>
