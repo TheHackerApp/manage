@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
-import { Toaster } from 'react-hot-toast';
 
-import NextUIProvider from '@/components/NextUIProvider';
-import ThemeProvider from '@/components/ThemeProvider';
-import { ApolloClientProvider } from '@/graphql/client';
+import Providers from '@/components/providers';
 import { cn } from '@/lib/styles';
 
 import './tailwind.css';
@@ -21,14 +18,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={cn(inter.className, 'h-dvh')}>
-        <ApolloClientProvider>
-          <NextUIProvider>
-            <ThemeProvider>
-              {children}
-              <Toaster position="top-right" toastOptions={{ className: 'toast' }} />
-            </ThemeProvider>
-          </NextUIProvider>
-        </ApolloClientProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
