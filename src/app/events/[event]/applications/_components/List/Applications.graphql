@@ -1,8 +1,5 @@
 query Applications {
   applications {
-    address {
-      country
-    }
     flagged
     participant {
       user {

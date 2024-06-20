@@ -23,7 +23,6 @@ const List = ({ event }: Props): ReactNode => {
       <TableHeader>
         <TableColumn>NAME</TableColumn>
         <TableColumn>EMAIL</TableColumn>
-        <TableColumn>COUNTRY</TableColumn>
         <TableColumn>STATUS</TableColumn>
         <TableColumn>APPLIED AT</TableColumn>
         <TableColumn>
@@ -37,7 +36,6 @@ const List = ({ event }: Props): ReactNode => {
               {application.participant.user.givenName} {application.participant.user.familyName}
             </TableCell>
             <TableCell>{application.participant.user.primaryEmail}</TableCell>
-            <TableCell>{application.address.country}</TableCell>
             <TableCell>
               <Status status={application.status} />
             </TableCell>
