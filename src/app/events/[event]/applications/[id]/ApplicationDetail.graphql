@@ -23,6 +23,7 @@ query ApplicationDetail($id: Int!) {
         id
         familyName
         givenName
+        primaryEmail
       }
     }
     portfolioUrl

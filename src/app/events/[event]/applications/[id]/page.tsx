@@ -43,6 +43,7 @@ const Application = ({ params: { event, id: rawId } }: Props): ReactNode => {
       </div>
       <div className="space-y-4">
         <Group name="About">
+          <Row label="Email" value={user.primaryEmail} />
           <Row label="Gender" value={application.gender} render={(value) => GENDER_NAMES[value]} />
           <Row
             label="Race / Ethnicity"

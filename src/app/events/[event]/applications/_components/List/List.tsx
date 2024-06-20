@@ -22,6 +22,7 @@ const List = ({ event }: Props): ReactNode => {
     <Table aria-label="All the applications">
       <TableHeader>
         <TableColumn>NAME</TableColumn>
+        <TableColumn>EMAIL</TableColumn>
         <TableColumn>COUNTRY</TableColumn>
         <TableColumn>STATUS</TableColumn>
         <TableColumn>APPLIED AT</TableColumn>
@@ -35,6 +36,7 @@ const List = ({ event }: Props): ReactNode => {
             <TableCell>
               {application.participant.user.givenName} {application.participant.user.familyName}
             </TableCell>
+            <TableCell>{application.participant.user.primaryEmail}</TableCell>
             <TableCell>{application.address.country}</TableCell>
             <TableCell>
               <Status status={application.status} />
