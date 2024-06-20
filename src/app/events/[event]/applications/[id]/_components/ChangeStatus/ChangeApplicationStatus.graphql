@@ -1,0 +1,11 @@
+mutation ChangeApplicationStatus($input: ChangeApplicationStatusInput!) {
+  changeApplicationStatus(input: $input) {
+    application {
+      status
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}

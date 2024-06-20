@@ -9,8 +9,9 @@ import { ReactNode } from 'react';
 
 import DateTime from '@/components/DateTime';
 import Status from '@/components/Status';
-import { Education, Gender, RaceEthnicity, Referrer } from '@/graphql';
+import { ApplicationStatus, Education, Gender, RaceEthnicity, Referrer } from '@/graphql';
 
+import ChangeStatus from './_components/ChangeStatus';
 import Group from './_components/Group';
 import Row from './_components/Row';
 import { useApplicationDetailSuspenseQuery } from './ApplicationDetail.graphql';
@@ -22,8 +23,9 @@ interface Props {
   };
 }
 
-const Application = ({ params: { event, id } }: Props): ReactNode => {
-  const { data } = useApplicationDetailSuspenseQuery({ variables: { id: parseInt(id) }, context: { event } });
+const Application = ({ params: { event, id: rawId } }: Props): ReactNode => {
+  const id = parseInt(rawId);
+  const { data } = useApplicationDetailSuspenseQuery({ variables: { id }, context: { event } });
 
   const application = data.application!;
   const user = application.participant.user;
@@ -83,6 +85,11 @@ const Application = ({ params: { event, id } }: Props): ReactNode => {
           <Row label="State / Province" value={application.address.administrativeArea} />
           <Row label="Postal Code" value={application.address.postalCode} />
           <Row label="Country" value={application.address.country} />
+        </Group>
+        <Group name="Organizer-only Information">
+          {!(
+            application.status === ApplicationStatus.Accepted || application.status === ApplicationStatus.Rejected
+          ) && <ChangeStatus id={id} event={event} current={application.status} />}
         </Group>
       </div>
       <Button
