@@ -1,0 +1,40 @@
+query ApplicationDetail($id: Int!) {
+  application(id: $id) {
+    address {
+      administrativeArea
+      country
+      line1
+      line2
+      line3
+      locality
+      postalCode
+    }
+    dateOfBirth
+    devpostUrl
+    education
+    flagged
+    gender
+    graduationYear
+    hackathonsAttended
+    major
+    notes
+    participant {
+      user {
+        id
+        familyName
+        givenName
+      }
+    }
+    portfolioUrl
+    raceEthnicity
+    referrer
+    school {
+      id
+      name
+    }
+    shareInformation
+    status
+    vcsUrl
+    updatedAt
+  }
+}

@@ -7,8 +7,8 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 import DateTime from '@/components/DateTime';
+import Status from '@/components/Status';
 
-import Status from './_components/Status';
 import { useApplicationsSuspenseQuery } from './Applications.graphql';
 
 interface Props {
