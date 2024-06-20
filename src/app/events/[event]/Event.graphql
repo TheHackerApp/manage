@@ -1,0 +1,9 @@
+query Event($event: String!) {
+  event(slug: $event) {
+    slug
+    active
+    domain
+    expiresOn
+    name
+  }
+}
