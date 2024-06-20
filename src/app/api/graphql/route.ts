@@ -33,7 +33,7 @@ async function processRequest(request: Request): Promise<Response> {
       // @ts-expect-error duplex is needed to make proxying response bodies work, but it is not part of the type
       duplex: 'half',
     });
-  } catch (e) {
+  } catch {
     return new Response(JSON.stringify({ errors: [{ message: 'fetch failed' }] }));
   }
 
