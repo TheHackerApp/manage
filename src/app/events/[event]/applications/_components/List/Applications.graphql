@@ -1,0 +1,17 @@
+query Applications {
+  applications {
+    address {
+      country
+    }
+    flagged
+    participant {
+      user {
+        id
+        familyName
+        givenName
+      }
+    }
+    status
+    updatedAt
+  }
+}
