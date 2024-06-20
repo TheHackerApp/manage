@@ -5,6 +5,7 @@ import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
 import { RetryLink } from '@apollo/client/link/retry';
 import { InMemoryCache } from '@apollo/experimental-nextjs-app-support';
 import { generatePersistedQueryIdsFromManifest } from '@apollo/persisted-query-lists';
+import toast from 'react-hot-toast';
 
 /**
  * Create the default set of links used, regardless of client type
@@ -33,6 +34,8 @@ export function defaultLinkMiddleware(): ApolloLink {
       }
     }
     if (networkError) logError(operation, 'Network', networkError.toString());
+
+    if (typeof window !== 'undefined') toast.error('Operation failed. Please try again later.');
   });
 
   return ApolloLink.from([errorHandler, persistedQueries, retry]);
