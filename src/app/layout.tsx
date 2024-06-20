@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 
 import NextUIProvider from '@/components/NextUIProvider';
+import ThemeProvider from '@/components/ThemeProvider';
 import { ApolloClientProvider } from '@/graphql/client';
 import { cn } from '@/lib/styles';
 
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en">
       <body className={cn(inter.className, 'h-dvh')}>
         <ApolloClientProvider>
-          <NextUIProvider>{children}</NextUIProvider>
+          <NextUIProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+          </NextUIProvider>
         </ApolloClientProvider>
       </body>
     </html>
