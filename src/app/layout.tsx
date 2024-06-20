@@ -1,3 +1,4 @@
+import { config } from '@fortawesome/fontawesome-svg-core';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
@@ -5,9 +6,11 @@ import type { PropsWithChildren } from 'react';
 import Providers from '@/components/providers';
 import { cn } from '@/lib/styles';
 
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import './tailwind.css';
 
 const inter = Inter({ subsets: ['latin'] });
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'h-dvh')}>
+      <body className={cn(inter.className, 'flex h-dvh w-full')}>
         <Providers>{children}</Providers>
       </body>
     </html>
