@@ -40,7 +40,7 @@ const List = ({ event }: Props): ReactNode => {
               <Status status={application.status} />
             </TableCell>
             <TableCell>
-              <DateTime value={application.updatedAt} />
+              <DateTime value={application.createdAt} />
             </TableCell>
             <TableCell>
               <div className="relative flex justify-end items-center gap-2">

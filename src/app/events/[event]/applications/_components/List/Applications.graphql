@@ -10,6 +10,6 @@ query Applications {
       }
     }
     status
-    updatedAt
+    createdAt
   }
 }
