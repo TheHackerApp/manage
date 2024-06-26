@@ -3,11 +3,14 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 
+import MaintenanceCard from '@/components/MaintenanceCard';
 import Providers from '@/components/providers';
 import { cn } from '@/lib/styles';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import './tailwind.css';
+
+const MAINTENANCE = (process.env.MAINTENANCE ?? '').toLowerCase().charAt(0) === 't';
 
 const inter = Inter({ subsets: ['latin'] });
 config.autoAddCss = false;
@@ -21,7 +24,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en">
       <body className={cn(inter.className, 'h-dvh')}>
-        <Providers>{children}</Providers>
+        <Providers>{MAINTENANCE ? <MaintenanceCard /> : children}</Providers>
       </body>
     </html>
   );

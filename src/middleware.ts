@@ -2,7 +2,9 @@ import { MiddlewareConfig, NextRequest, NextResponse } from 'next/server';
 
 import { isContextSuccess, loadContext } from '@/lib/context';
 
+const MAINTENANCE = (process.env.MAINTENANCE ?? '').toLowerCase().charAt(0) === 't';
 const SCHEME = process.env.SCHEME === 'production' ? 'https' : 'http';
+
 const INTERNAL_SERVER_ERROR = `
 <!doctype html>
 <html lang="en">
@@ -22,6 +24,8 @@ export const config: MiddlewareConfig = {
 };
 
 export async function middleware(request: NextRequest): Promise<NextResponse | undefined> {
+  if (MAINTENANCE) return;
+
   const session = request.cookies.get('session');
   const host = request.headers.get('host')!;
 
